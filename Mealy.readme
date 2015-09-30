@@ -1,0 +1,28 @@
+[How to use]
+1. Fill up the config at Mealy.cfg. 
+Provide states, symbols, delta, lambda and initial states.
+ex) 
+———Mealy.cfg———
+[Mealy]
+States: 0,1,2
+Symbols: a,b
+Delta: (0,a,0) (0,b,1) (1,a,0) (1,b,2) (2,a,0) (2,b,2)
+Lambda: (0,a,0) (0,b,0) (1,a,0) (1,b,0) (2,a,0) (2,b,1)
+Initial: 0
+Phi: 0,1
+# this example is detecting whether there's a consecutive b e.g) bb. If it finds it, it print 1 otherwise 0.
+————————————
+States are given as sequence of name of states seperated by comma.
+Symbols, Final are same as States.
+Delta are given as tuple (current_state, symbol, next_state). (same for lambda)
+Initial is one of States. 
+2. Provide string when running pyton file. ex) python dfa.py bbaa
+3. If given string is accepted by a language of DFA, it will return True otherwise False.
+
+[Build environment]
+OS: OS X Yosemite v.10.10.2
+Python version: 2.7.6
+
+코드에 대한 간단한 설명
+1. Mealy.cfg 파일을 열어 입력받은 Mealy를 분석한다. state, sigma는 특수문자를 제외한 모든 숫자와 글씨의 조합이 가능하며, Sigma다. transition function은 [state, symbol] = next state를 Dictionary에 저장하기 때문에 같은 state에서 같은 symbol을 입력받으면 항상 일정한 next state로 움직인다. 이번 과제에서 추가된 lambda도 transition function과 같은 원리이지만 next state 대신 output symbol을 return 한다. 
+2. word를 사용자로부터 입력받아 한글자씩 앞에서부터 읽으면서 cur을 바꾸며 output symbol을 기록한. 모든 글자에 대해 transition이 끝났을 때 결과값을 출력한다.
