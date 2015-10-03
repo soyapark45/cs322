@@ -50,12 +50,11 @@ class Mealy(object):
 			if self.delta.get((cur,s)) is None:
 				raise(Exception("ERROR! Invalid transition"))
 
-			cur = self.delta[(cur,s)]
-
 			if self.lam.get((cur,s)) is None:
 				raise(Exception("ERROR! Invalid lambda"))
 
 			phi += self.lam[(cur,s)]
+			cur = self.delta[(cur,s)]
 			
 		return phi
 
